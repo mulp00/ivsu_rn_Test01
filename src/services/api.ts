@@ -32,11 +32,17 @@ export default api;
 
 export const login = (
   credentials: ILoginCredentials,
-): Promise<AxiosResponse<ILoginResponse>> => {
-  return api.post<ILoginResponse>('auth/login', credentials).then(response => {
-    AsyncStorage.setItem('accessToken', response.data.access_token);
-    return response;
-  });
+): Promise<AxiosResponse<ILoginResponse> | string> => {
+  return api
+    .post<ILoginResponse>('auth/login', credentials)
+    .then(response => {
+      AsyncStorage.setItem('accessToken', response.data.access_token);
+      return response;
+    })
+    .catch(error => {
+      console.error(error);
+      return error.message;
+    });
 };
 
 export const register = (
