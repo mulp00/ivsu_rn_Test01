@@ -11,7 +11,7 @@ function WelcomeStackNavigator() {
   return (
     <WelcomeStack.Navigator initialRouteName={'Welcome'}>
       <WelcomeStack.Screen name="Welcome" component={WelcomeScreen} />
-      {<WelcomeStack.Screen name="Login" component={LoginScreen} />}
+      <WelcomeStack.Screen name="Login" component={LoginScreen} />
       <WelcomeStack.Screen name="Register" component={RegisterScreen} />
       {/*<WelcomeStack.Screen*/}
       {/*  name="ForgotPassword"*/}
